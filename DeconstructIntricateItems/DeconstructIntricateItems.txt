@@ -1,0 +1,9 @@
+## Title: DeconstructIntricateItems
+## Author: @Rite
+## Description: Will deconstruct all equipment with the "Intricate" trait in your inventory.
+## APIVersion: 100031
+## Version: 1.0.0
+## AddOnVersion: 1
+
+DeconstructIntricateItems.xml
+DeconstructIntricateItems.lua
