@@ -4,7 +4,7 @@
 ## Version: 0.0.1
 ## DependsOn: LibHarvensAddonSettings>=10704 LibAsync
 ## OptionalDependsOn: LibGPS TweakIt TrueExploration
-## SavedVariables: VotansMiniMap_Data
+## SavedVariables: MattsMiniMap_Data
 
 ## This Add-On is not created by, affiliated with or sponsored by ZeniMax Media Inc. or its affiliates. The Elder Scrolls� and related logos are registered trademarks or trademarks of ZeniMax Media Inc. in the United States and/or other countries. All rights reserved.
 
