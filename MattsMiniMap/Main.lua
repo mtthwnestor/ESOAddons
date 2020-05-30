@@ -1,5 +1,5 @@
 ﻿local MattsMiniMap = {
-	name = "VotansMiniMap",
+	name = "MattsMiniMap",
 	isSpecialZoom = false,
 	IsZoomHandledExternal = function()
 		return false
@@ -39,17 +39,6 @@ local lookup = {
 	fonts = {},
 	fontSizes = {}
 }
-
-local function NoOp()
-end
-
-local function GetScene()
-	return IsInGamepadPreferredMode() and GAMEPAD_WORLD_MAP_SCENE or WORLD_MAP_SCENE
-end
-
-local function FakeIsInGamepadPreferredMode()
-	return false
-end
 
 local function NoGamepad(func, ...)
 	local orgIsInGamepadPreferredMode = IsInGamepadPreferredMode
@@ -435,7 +424,7 @@ function MattsMiniMap:InitCameraAngle()
 	local playerControl = playerPin:GetControl()
 	local parent = playerControl:GetParent()
 	local function setupCameraAngle(control)
-		control:SetTexture("VotansMiniMap/ViewLimit.dds")
+		control:SetTexture("MattsMiniMap/ViewLimit.dds")
 		control:SetDimensions(4, 64)
 		control:SetAnchor(BOTTOM, playerControl, CENTER)
 		control:SetHidden(not self.account.showCameraAngle)
@@ -1455,58 +1444,15 @@ end
 
 function MattsMiniMap:Initialize()
 	local accountDefaults = {
-		enableTweaks = true,
 		enableMap = true,
-		zoom = 1.3,
+		zoom = 1,
 		mountedZoom = 1,
 		subZoneZoom = 1,
 		dungeonZoom = 0.7,
 		battlegroundZoom = 0,
 		zoomOut = 0.15,
 		zoomIn = 2,
-		zoomToPlayer = false,
-		frameStyle = "ESO",
-		borderAlpha = 100,
-		titleFont = "BOLD_FONT",
-		titleFontSize = "$(KB_18)",
-		titleColor = {GetInterfaceColor(INTERFACE_COLOR_TYPE_TEXT_COLORS, INTERFACE_TEXT_COLOR_NORMAL)},
-		showClock = true,
-		lockWindow = false,
-		allowFloorNavigation = true,
-		showFullTitle = false,
-		showCameraAngle = false,
-		cameraAngle = 45,
-		zoneAlertMode = self.zoneAlertMode.MiniMapHidden,
-		timeFormat = TIME_FORMAT_PRECISION_TWENTY_FOUR_HOUR,
-		debug = false,
-		asyncUpdate = false,
-		enableCompass = self.compassMode.Untouched,
-		titleAtTop = true,
-		unitPinScaleLimit = 0.8,
-		fixedMaps = {}
 	}
-	self.accountDefaults = accountDefaults
-
-	self.account = ZO_SavedVars:NewAccountWide("VotansMiniMap_Data", 1, nil, accountDefaults)
-
-	local defaults = {
-		showHUD = self.account.showHUD or true,
-		showLoot = self.account.showLoot or true,
-		showMounted = self.account.showMounted or true,
-		showCombat = self.account.showCombat or false,
-		showSiege = self.account.showSiege or false
-	}
-
-	self.player = ZO_SavedVars:NewCharacterIdSettings("VotansMiniMap_Data", 1, nil, defaults)
-
-	defaults = {
-		showHUD = true,
-		showLoot = true,
-		showMounted = true,
-		showCombat = false,
-		showSiege = false
-	}
-	self.defaults = defaults
 
 	if self.account.enableTweaks then
 		self:InitTweaks()
@@ -1586,7 +1532,7 @@ function MattsMiniMap:InitSettings()
 	MattsMiniMap.settingsControls = settings
 	settings.allowDefaults = true
 	settings.version = "1.6.9"
-	settings.website = "http://www.esoui.com/downloads/info1399-VotansMiniMap.html"
+	settings.website = ""
 
 	settings:AddSetting {
 		type = LibHarvensAddonSettings.ST_CHECKBOX,
@@ -2251,15 +2197,12 @@ do
 	end
 end
 
-local function OnAddonLoaded(event, name)
-	if name ~= MattsMiniMap.name then
-		return
+function MattsMiniMap.OnAddonLoaded(event, name)
+	if name == MattsMiniMap.name then
+		EVENT_MANAGER:UnregisterForEvent(MattsMiniMap.name, EVENT_ADD_ON_LOADED)
+		MattsMiniMap:Initialize()
+		MattsMiniMap:InitSettings()
 	end
-
-	EVENT_MANAGER:UnregisterForEvent(MattsMiniMap.name, EVENT_ADD_ON_LOADED)
-	MattsMiniMap:Initialize()
-	MattsMiniMap:InitSettings()
-	-- MattsMiniMap:InitPinLevels()
 end
 
 EVENT_MANAGER:RegisterForEvent(MattsMiniMap.name, EVENT_ADD_ON_LOADED, MattsMiniMap.OnAddonLoaded)

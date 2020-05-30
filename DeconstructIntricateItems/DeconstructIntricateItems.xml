@@ -1,25 +1,22 @@
 <GuiXml>
-  <Controls>
-    <TopLevelControl name="DeconstructIntricateItemsIndicator">
-      <Dimensions x="200" y="25" />
-      <Anchor point="BOTTOM" relativeTo="GuiRoot" relativePoint="CENTER" offsetY="-20" />
- 
-      <Controls>
-		<Button name="$(parent)Button" inherits="ZO_ButtonBehaviorClickSound">
-			<Dimensions x="40" y="40" />
-			<Anchor point="TOP" relativeTo="$(parent)" relativePoint="TOP" />
-			<Textures normal="esoui\art\crafting\enchantment_tabicon_deconstruction_up.dds"
-						pressed="esoui\art\crafting\enchantment_tabicon_deconstruction_down.dds"
-						mouseOver="esoui\art\crafting\enchantment_tabicon_deconstruction_over.dds"/>
-			<OnClicked>
-				DeconstructIntricateItems.Deconstruct()
-			</OnClicked>
-		</Button>
-		<Label name="$(parent)Label" width="200" height="25" font="ZoFontWinH1" inheritAlpha="true"
-            wrapMode="TRUNCATE" verticalAlignment="TOP" horizontalAlignment="CENTER"text="Deconstruct all Intricate items">
-			 <Anchor point="TOP" relativeTo="$(parent)" relativePoint="TOP" offsetY="-40"/>
-		</Label>
-      </Controls>
-    </TopLevelControl>
-  </Controls>
+    <Controls>
+        <TopLevelControl name="DeconstructIntricateItemsIndicator">
+            <Dimensions x="200" y="25" />
+            <Anchor point="BOTTOM" relativeTo="GuiRoot" relativePoint="CENTER" offsetY="-20" />
+        
+            <Controls>
+                <Button name="$(parent)Button" inherits="ZO_ButtonBehaviorClickSound">
+                    <Dimensions x="40" y="40" />
+                    <Anchor point="TOP" relativeTo="$(parent)" relativePoint="TOP" />
+                    <Textures normal="esoui\art\crafting\enchantment_tabicon_deconstruction_up.dds" pressed="esoui\art\crafting\enchantment_tabicon_deconstruction_down.dds" mouseOver="esoui\art\crafting\enchantment_tabicon_deconstruction_over.dds" />
+                    <OnClicked>
+                        DeconstructIntricateItems.Deconstruct()
+                    </OnClicked>
+                </Button>
+                <Label name="$(parent)Label" width="200" height="25" font="ZoFontWinH1" inheritAlpha="true" wrapMode="TRUNCATE" verticalAlignment="TOP" horizontalAlignment="CENTER" text="Deconstruct all Intricate items">
+                    <Anchor point="TOP" relativeTo="$(parent)" relativePoint="TOP" offsetY="-40" />
+                </Label>
+            </Controls>
+        </TopLevelControl>
+    </Controls>
 </GuiXml>

@@ -1,17 +1,9 @@
-## APIVersion: 100030
+## Author: @Rite
 ## Title: NewAddon
-## Version: 1.29
-## AddOnVersion: 1
-## Author: Developer
 ## Description: NewAddon description.
+## Version: 0.0.1
+## APIVersion: 100031
 ## SavedVariables: NewAddonSavedVariables
-## DependsOn: LibAddonMenu-2.0>=28
 
-Languages\en.lua
-Languages\$(language).lua
-
-Bindings.xml
 NewAddon.xml
-
 NewAddon.lua
-Settings.lua
